@@ -2,26 +2,29 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-public class Student {
+public class Person {
     private String name;
     private LocalDate dateOfBirth;
 
-    public Student(String name, String dateOfBirth) {
+    public Person(String name, String dateOfBirth) {
         this.name = name;
         this.dateOfBirth = LocalDate.parse(dateOfBirth, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
-    public void displayStudentInfo() {
+    public void displayPersonInfo() {
+        System.out.println("Person Name: " + name);
+    }
+
+    public void displayPersonAge() {
         LocalDate currentDate = LocalDate.now();
         int age = Period.between(dateOfBirth, currentDate).getYears();
-        System.out.println("Student Name: " + name);
-        System.out.println("Student Age: " + age);
+        System.out.println("Person Age: " + age);
     }
 
     public static void main(String[] args) {
-        Student student = new Student("John Doe", "15-04-2000");
-        student.displayStudentInfo();
+        Person person = new Person("Jane Doe", "25-12-1990");
+        person.displayPersonInfo();
+        person.displayPersonAge();
     }
 }
-
 
